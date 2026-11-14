@@ -15,7 +15,7 @@ MODE="${MODE:-link}"
 BACKUP_DIR="$HOME/.max-skills-backup/$(date +%Y%m%d-%H%M%S)"
 
 echo "仓库：$REPO_DIR"
-echo "目标：$SKILLS_DIR（模式：$MODE）"
+echo "目标：${SKILLS_DIR}（模式：${MODE}）"
 
 # 1. 拉取最新版。只做 fast-forward，本地有未提交的改动或分叉时直接报错，不覆盖本地内容
 git -C "$REPO_DIR" pull --ff-only --quiet
@@ -33,7 +33,7 @@ for src in "$REPO_DIR"/max-*/; do
   if [ "$MODE" = "link" ]; then
     # 已经是指向本仓库的软链接，说明之前装过，跳过
     if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$src" ]; then
-      echo "✓ $name（已链接）"
+      echo "✓ ${name}（已链接）"
       continue
     fi
     # 目标位置有旧版本时，先移到 skills 目录之外备份，避免 Agent 同时加载到两份
@@ -43,11 +43,11 @@ for src in "$REPO_DIR"/max-*/; do
       echo "  旧版已备份到：$BACKUP_DIR/$name"
     fi
     ln -s "$src" "$dst"
-    echo "+ $name（新建链接）"
+    echo "+ ${name}（新建链接）"
   else
     # 复制模式：用 rsync 同步，--delete 会删掉仓库里已经移除的文件
     rsync -a --delete --exclude '.DS_Store' "$src/" "$dst/"
-    echo "✓ $name（已复制）"
+    echo "✓ ${name}（已复制）"
   fi
 done
 
