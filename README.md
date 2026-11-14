@@ -11,7 +11,7 @@
 ## 安装
 
 ```bash
-git clone https://github.com/jgz1433223/max-skills.git
+git clone https://github.com/jgz1433223/Max-skills.git
 cp -r max-skills/<skill 名称> ~/.claude/skills/   # 或你所用 Agent 的 skills 目录
 ```
 

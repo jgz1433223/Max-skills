@@ -56,7 +56,7 @@
 把 `max-experience-deepdive` 文件夹放进你所用 Agent 的 skills 目录，例如：
 
 ```bash
-git clone https://github.com/jgz1433223/max-skills.git
+git clone https://github.com/jgz1433223/Max-skills.git
 # Claude Code
 cp -r max-skills/max-experience-deepdive ~/.claude/skills/
 # 其他支持 SKILL.md 格式的 Agent，放到对应的 skills 目录即可
